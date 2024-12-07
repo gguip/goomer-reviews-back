@@ -1,0 +1,27 @@
+{
+  "name": "goomer-reviews-backend",
+  "version": "1.0.0",
+  "description": "Backend for Goomer Reviews using Express.js and Firebase",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test:firebase": "node src/tests/firebase-connection.test.js",
+    "test:auth": "node src/tests/firebase-auth.test.js"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "firebase": "^11.0.2",
+    "firebase-admin": "^11.10.1",
+    "joi": "^17.9.2",
+    "multer": "^1.4.5-lts.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
