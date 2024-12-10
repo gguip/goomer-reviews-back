@@ -38,19 +38,57 @@ const options = {
               type: 'string',
               description: 'ID of the user who created the review',
             },
-            restaurantId: {
+            restaurantName: {
               type: 'string',
-              description: 'ID of the restaurant being reviewed',
+              description: 'Name of the restaurant',
             },
-            rating: {
+            address: {
+              type: 'string',
+              description: 'Restaurant address',
+            },
+            city: {
+              type: 'string',
+              description: 'Restaurant city',
+            },
+            ratings: {
+              type: 'object',
+              properties: {
+                food: {
+                  type: 'number',
+                  minimum: 1,
+                  maximum: 5,
+                  description: 'Food quality rating',
+                },
+                service: {
+                  type: 'number',
+                  minimum: 1,
+                  maximum: 5,
+                  description: 'Service quality rating',
+                },
+                environment: {
+                  type: 'number',
+                  minimum: 1,
+                  maximum: 5,
+                  description: 'Environment quality rating',
+                },
+              },
+            },
+            price: {
               type: 'number',
-              description: 'Rating score (1-5)',
               minimum: 1,
               maximum: 5,
+              description: 'Price rating',
             },
             comment: {
               type: 'string',
               description: 'Review comment',
+            },
+            images: {
+              type: 'array',
+              items: {
+                type: 'string',
+                description: 'URL of the review image',
+              },
             },
             createdAt: {
               type: 'string',

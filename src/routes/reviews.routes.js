@@ -436,67 +436,6 @@ router.post('/', authenticateUser, async (req, res) => {
     }
 });
 
-// Test endpoint for creating a review without authentication
-router.post('/test-create', async (req, res) => {
-    try {
-        console.log('Received request body:', req.body);
-        const { restaurantName, address, city, ratings, price, comment } = req.body;
-        
-        // Basic validation
-        if (!restaurantName || !address || !city || !ratings || !price) {
-            return res.status(400).json({ 
-                error: 'Missing required fields',
-                received: { restaurantName, address, city, ratings, price }
-            });
-        }
-
-        // Validate ratings object
-        if (!ratings.food || !ratings.environment || !ratings.service) {
-            return res.status(400).json({ 
-                error: 'Missing rating fields',
-                received: ratings
-            });
-        }
-
-        // Create review object
-        const review = {
-            restaurantName,
-            address,
-            city,
-            ratings: {
-                food: Number(ratings.food),
-                environment: Number(ratings.environment),
-                service: Number(ratings.service)
-            },
-            price: Number(price),
-            comment: comment || '',
-            userId: 'test-user',
-            createdAt: new Date().toISOString(),
-            images: []
-        };
-
-        console.log('Creating review:', review);
-
-        // Save to database
-        const reviewRef = await reviewModel.create(review);
-        
-        console.log('Review created with ID:', reviewRef.id);
-
-        res.status(201).json({
-            message: 'Review created successfully',
-            reviewId: reviewRef.id,
-            review
-        });
-    } catch (error) {
-        console.error('Error creating review:', error);
-        res.status(500).json({
-            error: 'Error creating review',
-            details: error.message,
-            stack: error.stack
-        });
-    }
-});
-
 /**
  * @swagger
  * /api/reviews/{id}:
