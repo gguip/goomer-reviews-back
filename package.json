@@ -4,7 +4,7 @@
   "description": "Backend for Goomer Reviews using Express.js and Firebase",
   "main": "src/index.js",
   "engines": {
-    "node": "18.x"
+    "node": "22.1.0"
   },
   "scripts": {
     "start": "node src/index.js",
