@@ -40,8 +40,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
+// Port configuration
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || '0.0.0.0';
+
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, host, () => {
+  console.log(`Server is running on ${host}:${port}`);
 });
